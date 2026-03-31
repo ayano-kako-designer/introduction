@@ -334,6 +334,76 @@ h1 {
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
+/* Portfolio ギャラリー */
+.portfolio-category {
+    margin-bottom: 50px;
+}
+
+.portfolio-category-title {
+    font-size: 26px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.portfolio-card:hover {
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.portfolio-image-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-image {
+    transform: scale(1.05);
+}
+
+.portfolio-card-body {
+    padding: 20px 25px;
+}
+
+.portfolio-card-body h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.portfolio-card-body p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
 /* Portfolio 準備中 */
 .coming-soon {
     display: flex;
@@ -438,6 +508,10 @@ h1 {
     }
 
     .skill-list {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
         grid-template-columns: 1fr;
     }
 }
