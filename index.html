@@ -76,8 +76,7 @@
                 <div class="timeline-item">
                     <div class="timeline-year">現在</div>
                     <div class="timeline-content">
-                        <p>これらの経験を通じて、幅広いモダリティ対応力に加え、特定領域における専門性を高めながら撮影品質を向上させる力を身につけている。</p>
-                        <p>そして、将来を見据える中で、医療を別の角度から支える分野にも挑戦したいと考えるようになり、現在はデザイン分野の知識・スキル習得に取り組んでいる。</p>
+                        <p>これらの経験を通じて、幅広いモダリティ対応力に加え、特定領域における専門性を高めながら撮影品質を向上させる力を身につけた。特に、<strong>医用画像の３D画像への再構成業務</strong>にやりがいを感じていたことから、３Dそのものに興味を持ち、<strong>Blender</strong>を使った制作の独学を開始。将来を見据え、新しい職場、新しい分野での経験を積みたいと考えている。</p>
                     </div>
                 </div>
             </div>
@@ -102,9 +101,8 @@
                         <div class="skill-item">HTML</div>
                         <div class="skill-item">CSS</div>
                         <div class="skill-item">Javascript</div>
-                        <div class="skill-item">Photoshop</div>
-                        <div class="skill-item learning">Illustrator <span class="badge">学習中</span></div>
-                        <div class="skill-item">ChatGPT</div>
+                        <div class="skill-item">Blender</div>
+                        <div class="skill-item">VSCode</div>
                     </div>
                     <div class="books">
                         <h3>デザイナー書籍</h3>
@@ -112,6 +110,7 @@
                             <li>素人っぽく見えないデザインのコツを教えてください。(ingectar-e)</li>
                             <li>デザイン入門教室 (坂本伸二)</li>
                             <li>プロンプトエンジニアリングの教科書 (クジラ飛行机)</li>
+                            <li>Blender　完全入門　(カサハラCG)</li>
                         </ul>
                     </div>
                 </div>
@@ -119,10 +118,25 @@
                 <div class="skill-category">
                     <h2>
                         <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            <!-- フィルム枠 -->
+                            <rect x="2" y="1" width="20" height="22" rx="1"></rect>
+                            <!-- 脊椎 -->
+                            <line x1="12" y1="5" x2="12" y2="20"></line>
+                            <!-- 鎖骨 -->
+                            <path d="M7 6 Q12 8 17 6"></path>
+                            <!-- 肋骨（左） -->
+                            <path d="M12 9 Q8 10 7 13"></path>
+                            <path d="M12 12 Q8 13 7 16"></path>
+                            <path d="M12 15 Q9 16 8 18"></path>
+                            <!-- 肋骨（右） -->
+                            <path d="M12 9 Q16 10 17 13"></path>
+                            <path d="M12 12 Q16 13 17 16"></path>
+                            <path d="M12 15 Q15 16 16 18"></path>
                         </svg>
-                        放射線技術
+                        放射線技師
                     </h2>
+
+                    <h3 class="skill-subcategory-title">撮影技術</h3>
                     <div class="skill-list">
                         <div class="skill-detail">
                             <h4>一般撮影</h4>
@@ -152,17 +166,8 @@
                             <p>Cアーム操作、整形外科・心血管外科対応</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="skill-category">
-                    <h2>
-                        <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <path d="M21 15l-5-5L5 21"></path>
-                        </svg>
-                        画像処理
-                    </h2>
+                    <h3 class="skill-subcategory-title">画像処理</h3>
                     <div class="skill-list">
                         <div class="skill-detail">
                             <h4>CT画像の3D再構成</h4>
@@ -225,10 +230,28 @@
                             <p>Blenderで制作した机とイスの3DCGモデル。</p>
                         </div>
                     </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image-wrap">
+                            <img src="blender/惑星探索/惑星探索.png" alt="惑星探索" class="portfolio-image">
+                        </div>
+                        <div class="portfolio-card-body">
+                            <h3>惑星探索</h3>
+                            <p>Blenderで制作した惑星探索の3DCGモデル。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- 画像モーダル -->
+    <div id="image-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <img id="modal-image" src="" alt="">
+            <p id="modal-caption"></p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

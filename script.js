@@ -70,6 +70,36 @@ document.addEventListener('DOMContentLoaded', function() {
         category.style.transition = 'all 0.6s ease';
         observer.observe(category);
     });
+
+    // 画像モーダル
+    const modal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalCaption = document.getElementById('modal-caption');
+    const modalClose = document.getElementById('modal-close');
+
+    document.querySelectorAll('.portfolio-card').forEach(wrap => {
+        wrap.style.cursor = 'zoom-in';
+        wrap.addEventListener('click', function() {
+            const img = this.querySelector('.portfolio-image');
+            const title = this.querySelector('h3').textContent;
+            modalImage.src = img.src;
+            modalImage.alt = img.alt;
+            modalCaption.textContent = title;
+            modal.classList.add('open');
+        });
+    });
+
+    function closeModal() {
+        modal.classList.remove('open');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
 });
 
 // スムーズスクロール機能
