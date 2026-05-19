@@ -76,17 +76,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalImage = document.getElementById('modal-image');
     const modalCaption = document.getElementById('modal-caption');
     const modalClose = document.getElementById('modal-close');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
+
+    let modalImages = [];
+    let modalIndex = 0;
+
+    function updateModalImage() {
+        modalImage.src = modalImages[modalIndex];
+        modalPrev.classList.toggle('hidden', modalIndex === 0);
+        modalNext.classList.toggle('hidden', modalIndex === modalImages.length - 1);
+    }
 
     document.querySelectorAll('.portfolio-card').forEach(wrap => {
         wrap.style.cursor = 'zoom-in';
         wrap.addEventListener('click', function() {
             const img = this.querySelector('.portfolio-image');
             const title = this.querySelector('h3').textContent;
-            modalImage.src = img.src;
-            modalImage.alt = img.alt;
+            const dataImages = this.getAttribute('data-images');
+            modalImages = dataImages ? JSON.parse(dataImages) : [img.src];
+            modalIndex = 0;
+            modalImage.alt = title;
             modalCaption.textContent = title;
+            updateModalImage();
             modal.classList.add('open');
         });
+    });
+
+    modalPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (modalIndex > 0) { modalIndex--; updateModalImage(); }
+    });
+
+    modalNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (modalIndex < modalImages.length - 1) { modalIndex++; updateModalImage(); }
     });
 
     function closeModal() {
@@ -99,6 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft' && modal.classList.contains('open')) { modalPrev.click(); }
+        if (e.key === 'ArrowRight' && modal.classList.contains('open')) { modalNext.click(); }
     });
 });
 

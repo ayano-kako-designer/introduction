@@ -522,6 +522,40 @@ h1 {
     opacity: 1;
 }
 
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: opacity 0.2s, background 0.2s;
+    z-index: 10;
+}
+
+.modal-nav:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal-prev {
+    left: -60px;
+}
+
+.modal-next {
+    right: -60px;
+}
+
+.modal-nav.hidden {
+    display: none;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .side-menu {
