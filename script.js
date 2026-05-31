@@ -38,6 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
         menuLinks[0].classList.add('active');
     }
 
+    // Homeナビカードのクリック処理
+    document.querySelectorAll('.home-nav-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const target = this.getAttribute('data-target');
+            const link = document.querySelector(`.side-menu a[data-section="${target}"]`);
+            if (link) link.click();
+        });
+    });
+
     // タイムラインアイテムのアニメーション
     const observerOptions = {
         threshold: 0.1,
@@ -88,29 +97,80 @@ document.addEventListener('DOMContentLoaded', function() {
         modalNext.classList.toggle('hidden', modalIndex === modalImages.length - 1);
     }
 
+    // 動画モーダル
+    const videoModal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
+    const videoModalCaption = document.getElementById('video-modal-caption');
+    const videoModalClose = document.getElementById('video-modal-close');
+
+    function closeVideoModal() {
+        videoModal.classList.remove('open');
+        modalVideo.pause();
+        modalVideo.src = '';
+    }
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', function(e) {
+        if (e.target === videoModal) closeVideoModal();
+    });
+
+    // 複数画像カードにドットインジケーターを追加
+    document.querySelectorAll('.portfolio-card[data-images]').forEach(card => {
+        const images = JSON.parse(card.getAttribute('data-images'));
+        if (images.length < 2) return;
+        const wrap = card.querySelector('.portfolio-image-wrap');
+        const dots = document.createElement('div');
+        dots.className = 'image-dots';
+        images.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'image-dot' + (i === 0 ? ' active' : '');
+            dots.appendChild(dot);
+        });
+        wrap.appendChild(dots);
+    });
+
+    function updateDots(card, index) {
+        card.querySelectorAll('.image-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+
     document.querySelectorAll('.portfolio-card').forEach(wrap => {
-        wrap.style.cursor = 'zoom-in';
+        const videoSrc = wrap.getAttribute('data-video');
+        wrap.style.cursor = videoSrc ? 'pointer' : 'zoom-in';
         wrap.addEventListener('click', function() {
-            const img = this.querySelector('.portfolio-image');
-            const title = this.querySelector('h3').textContent;
-            const dataImages = this.getAttribute('data-images');
-            modalImages = dataImages ? JSON.parse(dataImages) : [img.src];
-            modalIndex = 0;
-            modalImage.alt = title;
-            modalCaption.textContent = title;
-            updateModalImage();
-            modal.classList.add('open');
+            if (videoSrc) {
+                const title = this.querySelector('h3').textContent;
+                modalVideo.src = videoSrc;
+                videoModalCaption.textContent = title;
+                videoModal.classList.add('open');
+                modalVideo.play();
+            } else {
+                const img = this.querySelector('.portfolio-image');
+                const title = this.querySelector('h3').textContent;
+                const dataImages = this.getAttribute('data-images');
+                modalImages = dataImages ? JSON.parse(dataImages) : [img.src];
+                modalIndex = 0;
+                modalImage.alt = title;
+                modalCaption.textContent = title;
+                updateModalImage();
+                activeCard = this;
+                updateDots(this, 0);
+                modal.classList.add('open');
+            }
         });
     });
 
+    let activeCard = null;
+
     modalPrev.addEventListener('click', function(e) {
         e.stopPropagation();
-        if (modalIndex > 0) { modalIndex--; updateModalImage(); }
+        if (modalIndex > 0) { modalIndex--; updateModalImage(); if (activeCard) updateDots(activeCard, modalIndex); }
     });
 
     modalNext.addEventListener('click', function(e) {
         e.stopPropagation();
-        if (modalIndex < modalImages.length - 1) { modalIndex++; updateModalImage(); }
+        if (modalIndex < modalImages.length - 1) { modalIndex++; updateModalImage(); if (activeCard) updateDots(activeCard, modalIndex); }
     });
 
     function closeModal() {
@@ -122,7 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target === modal) closeModal();
     });
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') {
+            closeModal();
+            closeVideoModal();
+        }
         if (e.key === 'ArrowLeft' && modal.classList.contains('open')) { modalPrev.click(); }
         if (e.key === 'ArrowRight' && modal.classList.contains('open')) { modalNext.click(); }
     });

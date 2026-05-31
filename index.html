@@ -10,16 +10,63 @@
     <!-- 右側メニュー -->
     <nav class="side-menu">
         <ul>
+            <li><a href="#home" data-section="home">Home</a></li>
             <li><a href="#history" data-section="history">History</a></li>
-            <li><a href="#skill" data-section="skill">Skill</a></li>
             <li><a href="#portfolio" data-section="portfolio">Portfolio</a></li>
+            <li><a href="#skill" data-section="skill">Skill</a></li>
         </ul>
     </nav>
 
     <!-- メインコンテンツ -->
     <main class="main-content">
+        <!-- Home セクション -->
+        <section id="home" class="content-section active">
+            <div class="home-hero">
+                <div class="home-hero-text">
+                    <h1 class="home-name">加古　彩乃</h1>
+                    <p class="home-tagline">診療放射線技師 &amp; 3DCG クリエイター</p>
+                    <p class="home-description">医療現場での放射線技師としての経験を土台に、CT画像の3D再構成への関心からBlenderによる3DCG制作を独学で開始。3DCGを通して新たなキャリアのため日々、邁進中です！</p>
+                    <div class="home-nav-cards">
+                        <button class="home-nav-card" data-target="history">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>History</span>
+                        </button>
+                        <button class="home-nav-card" data-target="portfolio">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span>Portfolio</span>
+                        </button>
+                        <button class="home-nav-card" data-target="skill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            <span>Skill</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="home-hero-image">
+                    <div class="home-avatar-wrap">
+                        <p class="home-greeting">Welcome to my portfolio</p>
+                        <div class="avatar-photo-wrap">
+                            <div class="home-avatar">
+                                <img src="profile.jpg" alt="加古彩乃" class="avatar-photo">
+                            </div>
+                            <p class="avatar-label">モデルを作成中</p>
+                        </div>
+                        <p class="avatar-thanks">Thanks for viewing!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- History セクション -->
-        <section id="history" class="content-section active">
+        <section id="history" class="content-section">
             <h1>My History</h1>
             
             <div class="timeline">
@@ -27,8 +74,8 @@
                     <div class="timeline-year">2017年4月</div>
                     <div class="timeline-content">
                         <h3>大学進学</h3>
-                        <p>幼少期、レントゲンやMRI検査を受ける機会が多く、医療従事者の方々に支えられた経験から、将来は医療を通じて社会に貢献したいと考えるようになった。こうした思いをきっかけに、放射線技師としてのキャリアを志した。</p>
-                        <p>大学では、診断に必要な画像を正確かつ安全に提供するため、解剖学をはじめとした基礎医学、放射線の原理や人体への影響、画像工学、ならびにレントゲン装置などの医療機器の仕組みについて体系的に学んだ。これらの学修を通じて、放射線技師として必要な知識と技術を身につけた。</p>
+                        <p>小学生の頃からバスケをしており、怪我をした際にレントゲンやMRI検査を受けることが多く、将来は医療を通じて社会に貢献したいと考えるようになり、放射線技師を志した。</p>
+                        <p>大学では、診断に必要な画像を正確かつ安全に提供するため、解剖学をはじめとした基礎医学、放射線の原理や人体への影響、画像工学、医療機器の仕組みについて学んだ。これらを通じて、放射線技師として必要な知識と技術を身につけた。</p>
                     </div>
                 </div>
 
@@ -76,7 +123,7 @@
                 <div class="timeline-item">
                     <div class="timeline-year">現在</div>
                     <div class="timeline-content">
-                        <p>これらの経験を通じて、幅広いモダリティ対応力に加え、特定領域における専門性を高めながら撮影品質を向上させる力を身につけた。特に、<strong>医用画像の３D画像への再構成業務</strong>にやりがいを感じていたことから、３Dそのものに興味を持ち、<strong>Blender</strong>を使った制作の独学を開始。将来を見据え、新しい職場、新しい分野での経験を積みたいと考えている。</p>
+                        <p>現在、放射線技師として勤務する中で特に、<strong>CT画像から骨や血管などの3D画像に再構成する業務</strong>にやりがいを感じていることから、３Dそのものに興味を持ち、<strong>Blender</strong>を使った制作の独学を開始。3DCGを通して新しいキャリアに挑戦したいと考えている。</p>
                     </div>
                 </div>
             </div>
@@ -107,10 +154,11 @@
                     <div class="books">
                         <h3>デザイナー書籍</h3>
                         <ul>
-                            <li>素人っぽく見えないデザインのコツを教えてください。(ingectar-e)</li>
-                            <li>デザイン入門教室 (坂本伸二)</li>
-                            <li>プロンプトエンジニアリングの教科書 (クジラ飛行机)</li>
-                            <li>Blender　完全入門　(カサハラCG)</li>
+                            <li>素人っぽく見えないデザインのコツを教えてください。(ingectar-e著)</li>
+                            <li>デザイン入門教室 (坂本伸二著)</li>
+                            <li>プロンプトエンジニアリングの教科書 (クジラ飛行机著)</li>
+                            <li>Blender　完全入門　(カサハラCG著)</li>
+                            <li>基礎からしっかり学べるBlender　アニメーション入門講座 (Benjamin著)</li>
                         </ul>
                     </div>
                 </div>
@@ -200,7 +248,7 @@
         <!-- Portfolio セクション -->
         <section id="portfolio" class="content-section">
             <h1>Portfolio</h1>
-            <p class="section-description">学習を通じて制作した作品です。</p>
+            <p class="section-description">書籍・YouTubeなどを参考に、分からないことはAIに聞くなどして制作しました。</p>
 
             <div class="portfolio-category">
                 <h2 class="portfolio-category-title">
@@ -212,22 +260,29 @@
                     3DCG（Blender）
                 </h2>
                 <div class="portfolio-grid">
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-video="blender/X線発生原理/X線発生原理.mkv">
                         <div class="portfolio-image-wrap">
-                            <img src="blender/ミニチュアハウス/ミニチュアハウス.png" alt="ミニチュアハウス" class="portfolio-image">
+                            <img src="blender/X線発生原理/X線発生原理.png" alt="X線発生原理" class="portfolio-image">
+                            <div class="play-overlay">
+                                <div class="play-icon">
+                                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                                </div>
+                            </div>
                         </div>
                         <div class="portfolio-card-body">
-                            <h3>ミニチュアハウス</h3>
-                            <p>Blenderで制作したミニチュアハウスの3DCGモデル。</p>
+                            <h3>X線発生原理</h3>
+                            <p>書籍：「基礎からしっかり学べるBlender　アニメーション入門講座（Benjamin著）」を参考にX線が発生する原理を模した3Dアニメーションを制作。</p>
+                            <p class="portfolio-date">制作：2026年5月</p>
                         </div>
                     </div>
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-images='["blender/CT室/CT室.png","blender/CT室/CT.png","blender/CT室/カート.png"]'>
                         <div class="portfolio-image-wrap">
-                            <img src="blender/机とイス/レンダーの机とイス.png" alt="机とイス" class="portfolio-image">
+                            <img src="blender/CT室/CT室.png" alt="CT室" class="portfolio-image">
                         </div>
                         <div class="portfolio-card-body">
-                            <h3>机とイス</h3>
-                            <p>Blenderで制作した机とイスの3DCGモデル。</p>
+                            <h3>CT室</h3>
+                            <p>これまでの学びを応用してCT装置と救急カートの3DCGモデルを制作した。</p>
+                            <p class="portfolio-date">制作：2026年4月</p>
                         </div>
                     </div>
                     <div class="portfolio-card">
@@ -236,16 +291,28 @@
                         </div>
                         <div class="portfolio-card-body">
                             <h3>惑星探索</h3>
-                            <p>Blenderで制作した惑星探索の3DCGモデル。</p>
+                            <p>書籍：「Blender　完全入門　(カサハラCG)」を参考に制作した惑星探索の3Dモデル。</p>
+                            <p class="portfolio-date">制作：2026年4月</p>
                         </div>
                     </div>
-                    <div class="portfolio-card" data-images='["blender/CT室/CT室.png","blender/CT室/CT.png"]'>
+                    <div class="portfolio-card">
                         <div class="portfolio-image-wrap">
-                            <img src="blender/CT室/CT室.png" alt="CT室" class="portfolio-image">
+                            <img src="blender/机とイス/レンダーの机とイス.png" alt="机とイス" class="portfolio-image">
                         </div>
                         <div class="portfolio-card-body">
-                            <h3>CT室</h3>
-                            <p>Blenderで制作したCT装置と救急カートの3DCGモデル。</p>
+                            <h3>机とイス</h3>
+                            <p><a href="https://youtu.be/S6aAvxUx2ko?si=87rwMA8CoSN_DVHN" target="_blank" rel="noopener">こちらの動画</a>を参考に机とイスの3Dモデルを制作。</p>
+                            <p class="portfolio-date">制作：2026年3月</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image-wrap">
+                            <img src="blender/ミニチュアハウス/ミニチュアハウス.png" alt="ミニチュアハウス" class="portfolio-image">
+                        </div>
+                        <div class="portfolio-card-body">
+                            <h3>ミニチュアハウス</h3>
+                            <p><a href="https://youtu.be/JKCQrDZ52X8?si=MvaLVsTRWxlt4eDa" target="_blank" rel="noopener">こちらの動画</a>を参考にミニチュアハウスの3Dモデルを制作。</p>
+                            <p class="portfolio-date">制作：2026年3月</p>
                         </div>
                     </div>
                 </div>
@@ -261,6 +328,15 @@
             <img id="modal-image" src="" alt="">
             <button class="modal-nav modal-next" id="modal-next">&#10095;</button>
             <p id="modal-caption"></p>
+        </div>
+    </div>
+
+    <!-- 動画モーダル -->
+    <div id="video-modal">
+        <div class="video-modal-container">
+            <button id="video-modal-close">&times;</button>
+            <video id="modal-video" controls></video>
+            <p id="video-modal-caption"></p>
         </div>
     </div>
 
